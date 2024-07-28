@@ -23,9 +23,17 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
+          Image.asset(
+            ImageConstant.background_splash,
+          ),
+          Container(
+            color:
+                Colors.black.withOpacity(0.5), // Adjust the opacity as needed
+            width: double.infinity,
+            height: double.infinity,
+          ),
           GestureDetector(
             onTap: () {
               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
@@ -34,26 +42,14 @@ class _SplashState extends State<Splash> {
                 },
               ), (route) => false);
             },
-            child: GlossyContainer(
-              width: 200.0,
-              height: 200.0,
-              color: Colors.white,
-              margin: const EdgeInsets.only(bottom: 10),
-              borderRadius: BorderRadius.circular(15.0),
-              child: Center(
-                child: Image.asset(
-                  ImageConstant.logo,
-                  width: 170,
-                  height: 170,
-                ),
+            child: Center(
+              child: Image.asset(
+                ImageConstant.logo,
+                width: 170,
+                height: 170,
               ),
             ),
           ),
-          const Center(
-              child: Text(
-            'Mobile App For Navi Mumbai Police',
-            style: TextStyle(fontSize: 14, color: Colors.white),
-          ))
         ],
       ),
     );
